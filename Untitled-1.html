@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fénix IoT | Ingeniería & Transformación Digital</title>
+    <meta property="og:title" content="Fénix IoT | Ingeniería Avanzada">
+    <meta property="og:description" content="Transformación Digital 360°. Software, Infraestructura y Seguridad.">
+    <meta property="og:image" content="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        :root {
+            --primary: #00f2fe; --secondary: #4facfe; --dark: #0a192f;
+            --accent: #ff9d00; --mkt: #a855f7;
+            --safety: #f43f5e; --support: #10b981;
+        }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        .cursor-dot {
+            width: 8px; height: 8px; background: var(--primary);
+            position: fixed; border-radius: 50%; pointer-events: none;
+            z-index: 9999; transition: transform 0.1s;
+        }
+        .cursor-outline {
+            width: 40px; height: 40px; border: 2px solid var(--primary);
+            position: fixed; border-radius: 50%; pointer-events: none;
+            z-index: 9998; transition: transform 0.15s; opacity: 0.5;
+        }
+        body {
+            margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc; color: #1e293b; overflow-x: hidden;
+        }
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)),
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; color: white; padding: 20px;
+        }
+        .hero img { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 20px var(--primary)); animation: pulse 3s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        
+        .hero h1 {
+            font-size: 2.5rem; margin: 0; font-weight: 800; line-height: 1;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vcard-btn {
+            margin-top: 30px; padding: 15px 30px; background: var(--primary); color: var(--dark);
+            text-decoration: none; border-radius: 50px; font-weight: 800; text-transform: uppercase;
+            font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3); cursor: pointer;
+        }
+        .vcard-btn:hover { transform: scale(1.05); background: white; }
+        .stats-strip {
+            background: var(--dark); padding: 40px 20px; display: flex;
+            justify-content: space-around; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-item { text-align: center; color: white; min-width: 120px; }
+        .stat-item h4 { font-size: 2rem; margin: 0; color: var(--primary); }
+        .stat-item p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+        
+        .services-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .grid-pro { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card-pro {
+            background: white; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s; border: 1px solid #edf2f7; position: relative; overflow: hidden; cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .card-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+            color: white; padding: 30px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            opacity: 0; transform: translateY(100%); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-pro:hover .card-overlay, .card-pro:active .card-overlay { opacity: 1; transform: translateY(0); }
+        .card-pro i { font-size: 2.5rem; color: var(--dark); margin-bottom: 20px; transition: 0.3s; }
+        .card-pro h3 { font-size: 1.4rem; font-weight: 700; margin: 0; }
+        .card-overlay h4 { color: var(--primary); margin-bottom: 15px; font-size: 1.2rem; }
+        .card-overlay p { font-size: 0.85rem; line-height: 1.6; }
+
+        .card-infra i { color: var(--secondary); }
+        .card-infra .card-overlay h4 { color: var(--secondary); }
+        
+        .card-security i { color: var(--safety); }
+        .card-security .card-overlay { background: linear-gradient(135deg, #4c0519 0%, var(--dark) 100%); }
+        .card-security .card-overlay h4 { color: var(--safety); }
+
+        .card-mkt i { color: var(--mkt); }
+        .card-mkt .card-overlay { background: linear-gradient(135deg, #2e1065 0%, var(--dark) 100%); }
+        .card-mkt .card-overlay h4 { color: var(--mkt); }
+
+        .card-support i { color: var(--support); }
+        .card-support .card-overlay { background: linear-gradient(135deg, #064e3b 0%, var(--dark) 100%); }
+        .card-support .card-overlay h4 { color: var(--support); }
+
+        .quote-section { padding: 100px 20px; text-align: center; background-color: #fff; position: relative; }
+        .quote-container { max-width: 900px; margin: 0 auto; }
+        .quote-section h2 { font-style: italic; font-weight: 300; color: var(--dark); line-height: 1.5; font-size: 1.8rem; margin: 0; }
+        .quote-section b { color: var(--secondary); font-weight: 700; }
+        .quote-line { width: 50px; height: 3px; background: var(--primary); margin: 30px auto; }
+        .quote-author { letter-spacing: 4px; font-weight: 800; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; }
+
+        .portfolio-section { 
+            overflow: hidden; 
+            padding: 80px 0; 
+            background: #f8fafc;
+        }
+        .slider-container {
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+        .slider {
+            display: flex;
+            width: calc(350px * 8); 
+            animation: scroll 20s linear infinite;
+        }
+        .slider:hover { animation-play-state: paused; }
+        .slide {
+            width: 350px; height: 450px; padding: 15px; flex-shrink: 0; perspective: 1000px;
+        }
+        .slide-content {
+            width: 100%; height: 100%; background-size: cover; background-position: center; border-radius: 30px;
+            border: 2px solid rgba(0, 242, 254, 0.1); box-shadow: 0 15px 35px rgba(10, 25, 47, 0.15);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: grayscale(100%);
+        }
+        .slide-content:hover {
+            filter: grayscale(0%); transform: translateY(-10px) scale(1.02); border-color: var(--primary);
+            box-shadow: 0 20px 45px rgba(0, 242, 254, 0.25);
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-350px * 4)); }
+        }
+        @media (max-width: 768px) {
+            .slide { width: 280px; height: 380px; }
+            .slider { width: calc(280px * 8); }
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-280px * 4)); }
+            }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+        .footer { background: #020617; padding: 40px; color: #64748b; text-align: center; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <a href="https://wa.me/584142249603" class="wa-float" style="position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000;"><i class="fab fa-whatsapp"></i></a>
+    
+    <section class="hero">
+        <img src="assets/logo.png" alt="Fénix IoT" data-aos="zoom-in">
+        <p data-aos="fade-up">Ingeniería & Innovación</p>
+        <h1 data-aos="fade-up">TRANSFORMACIÓN<br>DIGITAL 360°</h1>
+        <a href="contacto.vcf" class="vcard-btn" data-aos="fade-up">Guardar Contacto <i class="fas fa-user-plus"></i></a>
+    </section>
+
+    <section class="stats-strip">
+        <div class="stat-item" data-aos="fade-up"><h4>+50</h4><p>Clientes</p></div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="100"><h4>100%</h4><p>Conectividad</p></div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200"><h4>24/7</h4><p>Soporte Tech</p></div>
+    </section>
+
+    <section class="services-section">
+        <div class="grid-pro">
+            <div class="card-pro" data-aos="fade-up">
+                <i class="fas fa-code"></i><h3>Software & POS</h3>
+                <div class="card-overlay">
+                    <h4>Gestión Inteligente</h4>
+                    <p>Implementación de sistemas de facturación, control de inventarios y auditoría operativa.</p>
+                </div>
+            </div>
+            <div class="card-pro card-infra" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-network-wired"></i><h3>Infraestructura</h3>
+                <div class="card-overlay">
+                    <h4>Conectividad Robusta</h4>
+                    <p>Diseño y montaje de redes corporativas, cableado estructurado y servidores.</p>
+                </div>
+            </div>
+            <div class="card-pro card-security" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-shield-alt"></i><h3>Seguridad & Monitoreo</h3>
+                <div class="card-overlay">
+                    <h4>Protección Inteligente</h4>
+                    <p>Integración de CCTV avanzada, sistemas de alarmas disuasivas y gestión de flotas por GPS con monitoreo de activos en tiempo real.</p>
+                </div>
+            </div>
+            <div class="card-pro card-mkt" data-aos="fade-up" data-aos-delay="300">
+                 <i class="fas fa-rss"></i> 
+                 <h3>Growth & NFC Strategy</h3>
+                 <div class="card-overlay">
+                    <h4>Impacto Híbrido</h4>
+                    <p>Potenciamos tu marca con <b>campañas de pauta inteligente</b> y tecnología NFC para una conexión física-digital inmediata.</p>
+                 </div>
+            </div>
+            <div class="card-pro card-support" data-aos="fade-up" data-aos-delay="400">
+                 <i class="fas fa-tools"></i> 
+                 <h3>Soporte Técnico</h3>
+                 <div class="card-overlay">
+                    <h4>Continuidad Operativa</h4>
+                    <p>Mantenimiento especializado y reparación de equipos críticos para que tu infraestructura nunca se detenga.</p>
+                </div>           
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="quote-container" data-aos="fade-up">
+            <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--primary); opacity: 0.2; margin-bottom: 20px;"></i>
+            <h2>"Lo que no se <b>mide</b>, no se puede <b>controlar</b>. <br> Lo que no se <b>controla</b>, no se puede <b>mejorar</b>."</h2>
+            <div class="quote-line"></div><span class="quote-author">Filosofía Fénix IoT</span>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <h2 style="text-align: center; margin-bottom: 50px; font-weight: 800; letter-spacing: 3px;">NUESTRO TRABAJO</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servcio2.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servicio1.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servicio3.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servicio4.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servcio2.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servicio1.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servicio3.png');"></div></div>
+                <div class="slide"><div class="slide-content" style="background-image: url('assets/servicio4.png');"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 <b>FÉNIX IOT</b> | Caracas - Barquisimeto - Valencia</p>
+        <p style="opacity: 0.5; letter-spacing: 2px;">INGENIERÍA PARA EL FUTURO</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+            outline.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+        });
+    </script>
+</body>
+</html>
