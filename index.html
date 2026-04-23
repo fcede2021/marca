@@ -40,7 +40,7 @@
             display: flex; flex-direction: column; justify-content: center;
             align-items: center; text-align: center; color: white; padding: 20px;
         }
-        .hero img { width: 150px; margin-bottom: 20px; filter: drop-shadow(0 0 20px var(--primary)); animation: pulse 3s infinite; }
+        .hero img { width: 300px; margin-bottom: 20px; filter: drop-shadow(0 0 20px var(--primary)); animation: pulse 3s infinite; }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         
         .hero h1 {
@@ -58,6 +58,23 @@
             box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3); cursor: pointer;
         }
         .vcard-btn:hover { transform: scale(1.05); background: white; }
+
+        /* Estilos para botones flotantes sin línea */
+        .email-float, .wa-float {
+            text-decoration: none !important; /* Quita la línea de abajo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            right: 30px;
+            border-radius: 50%;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+        .email-float:hover, .wa-float:hover {
+            transform: scale(1.1);
+        }
+
         .stats-strip {
             background: var(--dark); padding: 40px 20px; display: flex;
             justify-content: space-around; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(255,255,255,0.1);
@@ -132,7 +149,7 @@
         .slide-content {
             width: 100%; height: 100%; background-size: cover; background-position: center; border-radius: 30px;
             border: 2px solid rgba(0, 242, 254, 0.1); box-shadow: 0 15px 35px rgba(10, 25, 47, 0.15);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: grayscale(100%);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: grayscale(0%);
         }
         .slide-content:hover {
             filter: grayscale(0%); transform: translateY(-10px) scale(1.02); border-color: var(--primary);
@@ -157,7 +174,13 @@
 <body>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-    <a href="https://wa.me/584142249603" class="wa-float" style="position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000;"><i class="fab fa-whatsapp"></i></a>
+
+    <a href="javascript:void(0)" onclick="mostrarContacto()" class="email-float" style="bottom: 100px; background: var(--secondary); color: white; width: 60px; height: 60px; font-size: 25px; box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4); text-decoration: none !important;">
+    <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://wa.me/584142249603" class="wa-float" style="bottom: 30px; background: #25d366; color: white; width: 60px; height: 60px; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     
     <section class="hero">
         <img src="assets/logo.png" alt="Fénix IoT" data-aos="zoom-in">
@@ -238,6 +261,32 @@
         </div>
     </section>
 
+    <section id="contacto" class="services-section" style="background: white; border-radius: 50px 50px 0 0; display: none; opacity: 0; transform: translateY(20px); transition: all 0.5s ease;">
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <h2 data-aos="fade-up" style="font-weight: 800; letter-spacing: 2px;">¿LISTO PARA EMPEZAR?</h2>
+        <p data-aos="fade-up" style="color: #64748b; margin-bottom: 40px;">Déjanos tus datos y nos pondremos en contacto contigo "para ayer".</p>
+        
+        <form id="contact-form" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" name="from_name" placeholder="Nombre" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
+                <input type="text" name="from_last_name" placeholder="Apellido" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="email" name="from_email" placeholder="Correo electrónico" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
+                <input type="tel" name="from_phone" placeholder="Teléfono" style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
+            </div>
+
+            <textarea name="message" placeholder="¿En qué podemos ayudarte?" rows="5" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit; resize: none;"></textarea>
+            
+            <button type="submit" class="vcard-btn" style="border: none; width: 100%; margin-top: 10px;">
+                Enviar Mensaje <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+        <div id="form-status" style="margin-top: 20px; font-weight: 700; display: none;"></div>
+    </div>
+</section>
+
     <footer class="footer">
         <p>© 2026 <b>FÉNIX IOT</b> | Caracas - Barquisimeto - Valencia</p>
         <p style="opacity: 0.5; letter-spacing: 2px;">INGENIERÍA PARA EL FUTURO</p>
@@ -253,5 +302,63 @@
             outline.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
         });
     </script>
-</body>
-</html>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script type="text/javascript">
+        // 1. Inicialización de EmailJS
+        (function(){
+            emailjs.init("__eHSprmlFL0RtUHf");
+        })();
+
+        // 2. FUNCIÓN PARA MOSTRAR EL CONTACTO (Ahora fuera y lista para el clic)
+        function mostrarContacto() {
+    const seccion = document.getElementById('contacto');
+    
+    // Si la sección NO se está mostrando, la abrimos
+    if (seccion.style.display === 'none' || seccion.style.display === '') {
+        seccion.style.display = 'block';
+        setTimeout(() => {
+            seccion.style.opacity = '1';
+            seccion.style.transform = 'translateY(0)';
+            seccion.scrollIntoView({ behavior: 'smooth' });
+        }, 10);
+    } 
+    // Si YA se está mostrando, la ocultamos
+    else {
+        seccion.style.opacity = '0';
+        seccion.style.transform = 'translateY(20px)';
+        // Esperamos a que termine la animación (0.5s) para poner el display none
+        setTimeout(() => {
+            seccion.style.display = 'none';
+        }, 500); 
+    }
+}
+
+        // 3. Manejo del envío del formulario
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const btn = this.querySelector('button');
+            const status = document.getElementById('form-status');
+            
+            btn.innerText = 'ENVIANDO...';
+            btn.style.opacity = '0.5';
+
+            emailjs.sendForm('service_y0vz0zg', 'template_jnyfivp', this)
+                .then(function() {
+                    status.style.display = 'block';
+                    status.style.color = 'var(--support)';
+                    status.innerText = '¡Mensaje enviado con éxito! Te contactaremos pronto.';
+                    document.getElementById('contact-form').reset();
+                    btn.innerText = 'ENVIAR MENSAJE';
+                    btn.style.opacity = '1';
+                }, function(error) {
+                    status.style.display = 'block';
+                    status.style.color = 'var(--safety)';
+                    status.innerText = 'Error al enviar: ' + JSON.stringify(error);
+                    btn.innerText = 'REINTENTAR';
+                    btn.style.opacity = '1';
+                });
+        });
+    </script>
