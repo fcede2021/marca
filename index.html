@@ -4,12 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fénix IoT | Ingeniería & Transformación Digital</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V5ZK4760Y6"></script>
+    <script>
+              window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+  // Configuración optimizada para evitar bloqueos en navegadores estrictos
+             gtag('config', 'G-V5ZK4760Y6', {
+             'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+         });
+         
+</script>
     <meta property="og:title" content="Fénix IoT | Ingeniería Avanzada">
     <meta property="og:description" content="Transformación Digital 360°. Software, Infraestructura y Seguridad.">
     <meta property="og:image" content="assets/logo.png">
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Recursos externos con políticas de privacidad para evitar bloqueos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
         :root {
@@ -59,9 +76,8 @@
         }
         .vcard-btn:hover { transform: scale(1.05); background: white; }
 
-        /* Estilos para botones flotantes sin línea */
         .email-float, .wa-float {
-            text-decoration: none !important; /* Quita la línea de abajo */
+            text-decoration: none !important;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -71,10 +87,8 @@
             z-index: 1000;
             transition: 0.3s;
         }
-        .email-float:hover, .wa-float:hover {
-            transform: scale(1.1);
-        }
-
+        .email-float:hover, .wa-float:hover { transform: scale(1.1); }
+        
         .stats-strip {
             background: var(--dark); padding: 40px 20px; display: flex;
             justify-content: space-around; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(255,255,255,0.1);
@@ -105,15 +119,12 @@
 
         .card-infra i { color: var(--secondary); }
         .card-infra .card-overlay h4 { color: var(--secondary); }
-        
         .card-security i { color: var(--safety); }
         .card-security .card-overlay { background: linear-gradient(135deg, #4c0519 0%, var(--dark) 100%); }
         .card-security .card-overlay h4 { color: var(--safety); }
-
         .card-mkt i { color: var(--mkt); }
         .card-mkt .card-overlay { background: linear-gradient(135deg, #2e1065 0%, var(--dark) 100%); }
         .card-mkt .card-overlay h4 { color: var(--mkt); }
-
         .card-support i { color: var(--support); }
         .card-support .card-overlay { background: linear-gradient(135deg, #064e3b 0%, var(--dark) 100%); }
         .card-support .card-overlay h4 { color: var(--support); }
@@ -125,47 +136,27 @@
         .quote-line { width: 50px; height: 3px; background: var(--primary); margin: 30px auto; }
         .quote-author { letter-spacing: 4px; font-weight: 800; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; }
 
-        .portfolio-section { 
-            overflow: hidden; 
-            padding: 80px 0; 
-            background: #f8fafc;
-        }
+        .portfolio-section { overflow: hidden; padding: 80px 0; background: #f8fafc; }
         .slider-container {
-            width: 100%;
-            display: flex;
-            overflow: hidden;
+            width: 100%; display: flex; overflow: hidden;
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
-        .slider {
-            display: flex;
-            width: calc(350px * 8); 
-            animation: scroll 20s linear infinite;
-        }
+        .slider { display: flex; width: calc(350px * 8); animation: scroll 20s linear infinite; }
         .slider:hover { animation-play-state: paused; }
-        .slide {
-            width: 350px; height: 450px; padding: 15px; flex-shrink: 0; perspective: 1000px;
-        }
+        .slide { width: 350px; height: 450px; padding: 15px; flex-shrink: 0; perspective: 1000px; }
         .slide-content {
             width: 100%; height: 100%; background-size: cover; background-position: center; border-radius: 30px;
             border: 2px solid rgba(0, 242, 254, 0.1); box-shadow: 0 15px 35px rgba(10, 25, 47, 0.15);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: grayscale(0%);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .slide-content:hover {
-            filter: grayscale(0%); transform: translateY(-10px) scale(1.02); border-color: var(--primary);
-            box-shadow: 0 20px 45px rgba(0, 242, 254, 0.25);
-        }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-350px * 4)); }
-        }
+        .slide-content:hover { transform: translateY(-10px) scale(1.02); border-color: var(--primary); box-shadow: 0 20px 45px rgba(0, 242, 254, 0.25); }
+
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-350px * 4)); } }
         @media (max-width: 768px) {
             .slide { width: 280px; height: 380px; }
             .slider { width: calc(280px * 8); }
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-280px * 4)); }
-            }
+            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-280px * 4)); } }
             .cursor-dot, .cursor-outline { display: none; }
         }
         .footer { background: #020617; padding: 40px; color: #64748b; text-align: center; font-size: 0.8rem; }
@@ -175,10 +166,10 @@
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <a href="javascript:void(0)" onclick="mostrarContacto()" class="email-float" style="bottom: 100px; background: var(--secondary); color: white; width: 60px; height: 60px; font-size: 25px; box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4); text-decoration: none !important;">
-    <i class="fas fa-envelope"></i>
+    <a href="javascript:void(0)" onclick="mostrarContacto()" class="email-float" style="bottom: 100px; background: var(--secondary); color: white; width: 60px; height: 60px; font-size: 25px; box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);">
+        <i class="fas fa-envelope"></i>
     </a>
-    <a href="https://wa.me/584142249603" class="wa-float" style="bottom: 30px; background: #25d366; color: white; width: 60px; height: 60px; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);">
+    <a href="https://wa.me/584142249603" target="_blank" class="wa-float" style="bottom: 30px; background: #25d366; color: white; width: 60px; height: 60px; font-size: 30px; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);">
         <i class="fab fa-whatsapp"></i>
     </a>
     
@@ -186,7 +177,9 @@
         <img src="assets/logo.png" alt="Fénix IoT" data-aos="zoom-in">
         <p data-aos="fade-up">Ingeniería & Innovación</p>
         <h1 data-aos="fade-up">TRANSFORMACIÓN<br>DIGITAL 360°</h1>
-        <a href="contacto.vcf" class="vcard-btn" data-aos="fade-up">Guardar Contacto <i class="fas fa-user-plus"></i></a>
+        <a href="contacto.vcf" class="vcard-btn" data-aos="fade-up">
+            Guardar Contacto <i class="fas fa-user-plus"></i>
+        </a>
     </section>
 
     <section class="stats-strip">
@@ -197,6 +190,7 @@
 
     <section class="services-section">
         <div class="grid-pro">
+            <!-- Software & POS -->
             <div class="card-pro" data-aos="fade-up">
                 <i class="fas fa-code"></i><h3>Software & POS</h3>
                 <div class="card-overlay">
@@ -204,6 +198,7 @@
                     <p>Implementación de sistemas de facturación, control de inventarios y auditoría operativa.</p>
                 </div>
             </div>
+            <!-- Infraestructura -->
             <div class="card-pro card-infra" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-network-wired"></i><h3>Infraestructura</h3>
                 <div class="card-overlay">
@@ -211,27 +206,28 @@
                     <p>Diseño y montaje de redes corporativas, cableado estructurado y servidores.</p>
                 </div>
             </div>
+            <!-- Seguridad -->
             <div class="card-pro card-security" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-shield-alt"></i><h3>Seguridad & Monitoreo</h3>
                 <div class="card-overlay">
                     <h4>Protección Inteligente</h4>
-                    <p>Integración de CCTV avanzada, sistemas de alarmas disuasivas y gestión de flotas por GPS con monitoreo de activos en tiempo real.</p>
+                    <p>Integración de CCTV avanzada, alarmas y gestión de flotas por GPS en tiempo real.</p>
                 </div>
             </div>
+            <!-- Marketing/NFC -->
             <div class="card-pro card-mkt" data-aos="fade-up" data-aos-delay="300">
-                 <i class="fas fa-rss"></i> 
-                 <h3>Growth & NFC Strategy</h3>
+                 <i class="fas fa-rss"></i><h3>Growth & NFC</h3>
                  <div class="card-overlay">
                     <h4>Impacto Híbrido</h4>
-                    <p>Potenciamos tu marca con <b>campañas de pauta inteligente</b> y tecnología NFC para una conexión física-digital inmediata.</p>
+                    <p>Potenciamos tu marca con pauta inteligente y tecnología NFC para conexión física-digital.</p>
                  </div>
             </div>
+            <!-- Soporte -->
             <div class="card-pro card-support" data-aos="fade-up" data-aos-delay="400">
-                 <i class="fas fa-tools"></i> 
-                 <h3>Soporte Técnico</h3>
+                 <i class="fas fa-tools"></i><h3>Soporte Técnico</h3>
                  <div class="card-overlay">
                     <h4>Continuidad Operativa</h4>
-                    <p>Mantenimiento especializado y reparación de equipos críticos para que tu infraestructura nunca se detenga.</p>
+                    <p>Mantenimiento especializado de equipos críticos para que tu empresa nunca se detenga.</p>
                 </div>           
             </div>
         </div>
@@ -262,103 +258,99 @@
     </section>
 
     <section id="contacto" class="services-section" style="background: white; border-radius: 50px 50px 0 0; display: none; opacity: 0; transform: translateY(20px); transition: all 0.5s ease;">
-    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <h2 data-aos="fade-up" style="font-weight: 800; letter-spacing: 2px;">¿LISTO PARA EMPEZAR?</h2>
-        <p data-aos="fade-up" style="color: #64748b; margin-bottom: 40px;">"Impulse su proyecto con ingeniería de vanguardia. Déjenos su mensaje y nos comunicaremos con usted a la brevedad para brindarle una solución a su medida.".</p>
-        
-        <form id="contact-form" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <input type="text" name="from_name" placeholder="Nombre" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
-                <input type="text" name="from_last_name" placeholder="Apellido" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <input type="email" name="from_email" placeholder="Correo electrónico" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
-                <input type="tel" name="from_phone" placeholder="Teléfono" style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit;">
-            </div>
-
-            <textarea name="message" placeholder="¿En qué podemos ayudarte?" rows="5" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; font-family: inherit; resize: none;"></textarea>
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <h2 style="font-weight: 800; letter-spacing: 2px;">¿LISTO PARA EMPEZAR?</h2>
+            <p style="color: #64748b; margin-bottom: 40px;">Impulse su proyecto con ingeniería de vanguardia. Déjenos su mensaje.</p>
             
-            <button type="submit" class="vcard-btn" style="border: none; width: 100%; margin-top: 10px;">
-                Enviar Mensaje <i class="fas fa-paper-plane"></i>
-            </button>
-        </form>
-        <div id="form-status" style="margin-top: 20px; font-weight: 700; display: none;"></div>
-    </div>
-</section>
+            <form id="contact-form" style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <input type="text" name="from_name" placeholder="Nombre" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                    <input type="text" name="from_last_name" placeholder="Apellido" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <input type="email" name="from_email" placeholder="Correo electrónico" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                    <input type="tel" name="from_phone" placeholder="Teléfono" style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                </div>
+                <textarea name="message" placeholder="¿En qué podemos ayudarte?" rows="5" required style="padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; resize: none;"></textarea>
+                <button type="submit" class="vcard-btn" style="border: none; width: 100%; margin-top: 10px;">
+                    Enviar Mensaje <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+            <div id="form-status" style="margin-top: 20px; font-weight: 700; display: none;"></div>
+        </div>
+    </section>
 
     <footer class="footer">
-        <p>© 2026 <b>FÉNIX IOT</b> | Caracas - Barquisimeto - Valencia</p>
-        <p style="opacity: 0.5; letter-spacing: 2px;">INGENIERÍA PARA EL FUTURO</p>
+        <p>© 2026 <b>FÉNIX IOT</b> | RIF: J-503719150</p>
+        <p>Caracas - Barquisimeto - Valencia</p>
+        <p style="opacity: 0.5; letter-spacing: 2px; margin-top: 10px;">INGENIERÍA PARA EL FUTURO</p>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
+    <!-- Scripts de Terceros con Atributos de Privacidad Actualizados -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script type="text/javascript">
+        // Inicialización de AOS
         AOS.init({ duration: 1000, once: true });
+
+        // Inicialización de EmailJS con StorageProvider Nulo para evitar bloqueos de Tracking Prevention
+        (function(){
+            emailjs.init({
+                publicKey: "__eHSprmlFL0RtUHf",
+                storageProvider: null
+            });
+        })();
+
+        // Cursor Personalizado
         const dot = document.querySelector('.cursor-dot');
         const outline = document.querySelector('.cursor-outline');
         window.addEventListener('mousemove', (e) => {
             dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
             outline.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
         });
-    </script>
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
-    <script type="text/javascript">
-        // 1. Inicialización de EmailJS
-        (function(){
-            emailjs.init("__eHSprmlFL0RtUHf");
-        })();
 
-        // 2. FUNCIÓN PARA MOSTRAR EL CONTACTO (Ahora fuera y lista para el clic)
+        // Toggle Formulario Contacto
         function mostrarContacto() {
-    const seccion = document.getElementById('contacto');
-    
-    // Si la sección NO se está mostrando, la abrimos
-    if (seccion.style.display === 'none' || seccion.style.display === '') {
-        seccion.style.display = 'block';
-        setTimeout(() => {
-            seccion.style.opacity = '1';
-            seccion.style.transform = 'translateY(0)';
-            seccion.scrollIntoView({ behavior: 'smooth' });
-        }, 10);
-    } 
-    // Si YA se está mostrando, la ocultamos
-    else {
-        seccion.style.opacity = '0';
-        seccion.style.transform = 'translateY(20px)';
-        // Esperamos a que termine la animación (0.5s) para poner el display none
-        setTimeout(() => {
-            seccion.style.display = 'none';
-        }, 500); 
-    }
-}
+            const seccion = document.getElementById('contacto');
+            if (seccion.style.display === 'none' || seccion.style.display === '') {
+                seccion.style.display = 'block';
+                setTimeout(() => {
+                    seccion.style.opacity = '1';
+                    seccion.style.transform = 'translateY(0)';
+                    seccion.scrollIntoView({ behavior: 'smooth' });
+                }, 10);
+            } else {
+                seccion.style.opacity = '0';
+                seccion.style.transform = 'translateY(20px)';
+                setTimeout(() => { seccion.style.display = 'none'; }, 500); 
+            }
+        }
 
-        // 3. Manejo del envío del formulario
+        // Manejo de Formulario
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            
             const btn = this.querySelector('button');
             const status = document.getElementById('form-status');
-            
             btn.innerText = 'ENVIANDO...';
             btn.style.opacity = '0.5';
 
             emailjs.sendForm('service_y0vz0zg', 'template_kujeui4', this)
-                .then(function() {
+                .then(() => {
                     status.style.display = 'block';
                     status.style.color = 'var(--support)';
-                    status.innerText = '¡Mensaje enviado con éxito! Te contactaremos pronto.';
-                    document.getElementById('contact-form').reset();
+                    status.innerText = '¡Mensaje enviado con éxito!';
+                    this.reset();
                     btn.innerText = 'ENVIAR MENSAJE';
                     btn.style.opacity = '1';
-                }, function(error) {
+                }, (error) => {
                     status.style.display = 'block';
                     status.style.color = 'var(--safety)';
-                    status.innerText = 'Error al enviar: ' + JSON.stringify(error);
+                    status.innerText = 'Error al enviar.';
                     btn.innerText = 'REINTENTAR';
                     btn.style.opacity = '1';
                 });
         });
     </script>
+</body>
+</html>
